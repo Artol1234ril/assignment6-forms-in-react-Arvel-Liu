@@ -76,31 +76,36 @@ export default function Form() {
     
       <form className="form-container" onSubmit={handleSubmit}>
         <h3>Registration Form</h3>
-        <label>
+        <label>          
+        {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
           Name:
           <input type="text" name="name" value={formdata.name} onChange={handleChange} />
-          {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
+
         </label>
 
-        <label>
+        <label>          
+        {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
           Email:
           <input type="email" name="email" value={formdata.email} onChange={handleChange} />
-          {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
+
         </label>
 
-        <label>
+        <label>          
+            {errors.password && <span style={{ color: "red" }}>{errors.password}</span>}
           Password:
           <input type="password" name="password" value={formdata.password} onChange={handleChange} />
-          {errors.password && <span style={{ color: "red" }}>{errors.password}</span>}
+
         </label>
 
-        <label>
+        <label>          
+        {errors.age && <span style={{ color: "red" }}>{errors.age}</span>}
           Age:
           <input type="number" name="age" value={formdata.age} onChange={handleChange} />
-          {errors.age && <span style={{ color: "red" }}>{errors.age}</span>}
+
         </label>
 
-        <label>
+        <label>        
+        {errors.gender && <span style={{ color: "red" }}>{errors.gender}</span>}
           <input
             type="radio"
             name="gender"
@@ -120,7 +125,7 @@ export default function Form() {
           />
           Female
         </label>
-        {errors.gender && <span style={{ color: "red" }}>{errors.gender}</span>}
+
 
         <label>
           Role:
@@ -131,23 +136,31 @@ export default function Form() {
           </select>
         </label>
 
-        <label>
-        <span style={{ color: "#333" }} onMouseEnter={() => setShowtrm(true)} onMouseLeave={() => setShowtrm(false)}>
-          Accept Terms and Conditions
+        <label >        
+        {errors.acceptTerms && <span style={{ color: "red" }}>{errors.acceptTerms}</span>}
+        <span
+            style={{ color: "#0077cc", textDecoration: "underline", cursor: "pointer" }}
+            onMouseEnter={() => setShowtrm(true)}
+            onMouseLeave={() => setShowtrm(false)}
+            onMouseDown={() => setShowtrm(true)}
+        >
+           Accept Terms and Conditions
         </span>
-          <input
+        <input
             type="checkbox"
             name="acceptTerms"
             checked={formdata.acceptTerms}
             onChange={handleChange}
-          />
-          {showtrm == true && <span style={{ color: "#333" }}>No Game No Life</span>}
-          {errors.acceptTerms && <span style={{ color: "red" }}>{errors.acceptTerms}</span>}
+        />
+
+          {showtrm == true && <span style={{ color: "#f0f0f0", backgroundColor: "#06021f", padding: "10px", borderRadius: "5px" }}>By registering, you agree to follow all rules and provide accurate
+              information.</span>}
+
         </label>
 
         <button>Submit</button>
         {errors.all && (
-          <span style={{ color: "red", display: "block", marginTop: "10px" }}>
+          <span style={{ color: "red" }}>
             {errors.all}
           </span>
         )}
