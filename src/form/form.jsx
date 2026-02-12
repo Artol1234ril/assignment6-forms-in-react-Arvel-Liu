@@ -10,7 +10,7 @@ export default function Form() {
     role: "Student",
     acceptTerms: false,
   });
-
+  const [showtrm, setShowtrm] = useState(false);
   const [errors, setErrors] = useState({});
   const [submittedData, setSubmittedData] = useState(null);
 
@@ -132,13 +132,16 @@ export default function Form() {
         </label>
 
         <label>
-          Accept Terms:
+        <span style={{ color: "#333" }} onMouseEnter={() => setShowtrm(true)} onMouseLeave={() => setShowtrm(false)}>
+          Accept Terms and Conditions
+        </span>
           <input
             type="checkbox"
             name="acceptTerms"
             checked={formdata.acceptTerms}
             onChange={handleChange}
           />
+          {showtrm == true && <span style={{ color: "#333" }}>No Game No Life</span>}
           {errors.acceptTerms && <span style={{ color: "red" }}>{errors.acceptTerms}</span>}
         </label>
 
