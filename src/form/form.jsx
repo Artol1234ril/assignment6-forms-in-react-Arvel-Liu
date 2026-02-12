@@ -51,7 +51,6 @@ export default function Form() {
     if (!formdata.gender) newErrors.gender = "Please select a gender";
     if (!formdata.acceptTerms) newErrors.acceptTerms = "You must accept the terms";
 
-    // ✅ Global check: if any field is missing, add "all" error
     if (
       !formdata.name.trim() ||
       !formdata.email.trim() ||
@@ -74,7 +73,9 @@ export default function Form() {
 
   return (
     <>
+    
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Registration Form</h3>
         <label>
           Name:
           <input type="text" name="name" value={formdata.name} onChange={handleChange} />
